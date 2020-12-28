@@ -1,11 +1,15 @@
 import React from 'react';
 import './ImageFileInput.css';
 
-export class ImageFileInput extends React.Component {
+type ImageFileInputProps = {
+  onFileSelected: (filename: string | undefined) => void;
+};
+
+export class ImageFileInput extends React.Component<ImageFileInputProps> {
   fileInput = React.createRef<HTMLInputElement>();
 
   handleFileChanged = () => {
-    console.log(this.fileInput.current?.value);
+    this.props.onFileSelected(this.fileInput.current?.value);
   };
 
   render() {
