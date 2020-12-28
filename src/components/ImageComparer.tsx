@@ -1,4 +1,5 @@
 import React from 'react';
+import { ImageComparison } from './ImageComparison';
 import { ImageFileInput } from './ImageFileInput';
 
 export class ImageComparer extends React.Component {
@@ -6,7 +7,7 @@ export class ImageComparer extends React.Component {
     return (
       <div>
         <ImageFileInput />
-        <div>Image Comparer</div>
+        <ImageComparison />
       </div>
     );
   }
