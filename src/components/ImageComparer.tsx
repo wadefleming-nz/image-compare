@@ -22,12 +22,12 @@ export class ImageComparer extends React.Component<{}, ImageComparerState> {
     }
   }
 
-  onBeforeFileSelected = (file: File | undefined) => {
+  onBeforeFileSelected = (file: File) => {
     this.revokeObjectUrl(this.state.beforeImageUrl);
     this.setState({ beforeImageUrl: URL.createObjectURL(file) });
   };
 
-  onAfterFileSelected = (file: File | undefined) => {
+  onAfterFileSelected = (file: File) => {
     this.revokeObjectUrl(this.state.afterImageUrl);
     this.setState({ afterImageUrl: URL.createObjectURL(file) });
   };

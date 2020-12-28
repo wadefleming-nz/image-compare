@@ -2,7 +2,7 @@ import React from 'react';
 import './ImageFileInput.css';
 
 type ImageFileInputProps = {
-  onFileSelected: (file: File | undefined) => void;
+  onFileSelected: (file: File) => void;
 };
 
 export class ImageFileInput extends React.Component<ImageFileInputProps> {
