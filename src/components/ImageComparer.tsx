@@ -7,6 +7,7 @@ export class ImageComparer extends React.Component {
     return (
       <div>
         <ImageFileInput />
+        <ImageFileInput />
         <ImageComparison />
       </div>
     );
