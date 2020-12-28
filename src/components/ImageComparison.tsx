@@ -1,8 +1,11 @@
 import React from 'react';
-import beforeImage from '../assets/example-image-before.jpg';
 
-export class ImageComparison extends React.Component {
+type ImageComparisonProps = {
+  src: string;
+};
+
+export class ImageComparison extends React.Component<ImageComparisonProps> {
   render() {
-    return <img src={beforeImage} alt="Image for Comparison" />;
+    return <img src={this.props.src} alt="Image for Comparison" />;
   }
 }

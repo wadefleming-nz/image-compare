@@ -2,23 +2,37 @@ import React from 'react';
 import { ImageComparison } from './ImageComparison';
 import { ImageFileInput } from './ImageFileInput';
 
-export class ImageComparer extends React.Component {
-  state = {
-    beforeImageFilename: '',
-    afterImageFilename: '',
-  };
+type ImageComparerState = {
+  beforeImageFile: File | undefined;
+  afterImageFile: File | undefined;
+};
 
-  onBeforeFileSelected = (filename: string | undefined) =>
-    this.setState({ beforeImageFilename: filename });
-  onAfterFileSelected = (filename: string | undefined) =>
-    this.setState({ afterImageFilename: filename });
+export class ImageComparer extends React.Component<{}, ImageComparerState> {
+  constructor(props: never) {
+    super(props);
+    this.state = {
+      beforeImageFile: undefined,
+      afterImageFile: undefined,
+    };
+  }
+
+  onBeforeFileSelected = (file: File | undefined) =>
+    this.setState({ beforeImageFile: file });
+  onAfterFileSelected = (file: File | undefined) =>
+    this.setState({ afterImageFile: file });
 
   render() {
     return (
       <div>
         <ImageFileInput onFileSelected={this.onBeforeFileSelected} />
         <ImageFileInput onFileSelected={this.onAfterFileSelected} />
-        <ImageComparison />
+        {this.state.beforeImageFile ? (
+          <ImageComparison
+            src={URL.createObjectURL(this.state.beforeImageFile)}
+          />
+        ) : (
+          <div>Please select files</div>
+        )}
       </div>
     );
   }
