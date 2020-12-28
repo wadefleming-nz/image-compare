@@ -1,4 +1,5 @@
 import React from 'react';
+import './ImageComparison.css';
 
 type ImageComparisonProps = {
   src: string;
