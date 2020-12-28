@@ -2,14 +2,22 @@ import React from 'react';
 import './ImageFileInput.css';
 
 export class ImageFileInput extends React.Component {
+  fileInput = React.createRef<HTMLInputElement>();
+
+  handleFileChanged = () => {
+    console.log(this.fileInput.current?.value);
+  };
+
   render() {
     return (
-      <div>
-        <label>
-          Filename
-          <input value="Image.jpg"></input>
-        </label>
-      </div>
+      <label>
+        Filename
+        <input
+          type="file"
+          ref={this.fileInput}
+          onChange={this.handleFileChanged}
+        ></input>
+      </label>
     );
   }
 }
