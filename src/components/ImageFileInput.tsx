@@ -2,6 +2,7 @@ import React from 'react';
 import './ImageFileInput.css';
 
 type ImageFileInputProps = {
+  label: string;
   onFileSelected: (file: File) => void;
 };
 
@@ -15,7 +16,7 @@ export class ImageFileInput extends React.Component<ImageFileInputProps> {
   render() {
     return (
       <label>
-        Filename
+        {this.props.label}
         <input
           type="file"
           accept="image/*"
