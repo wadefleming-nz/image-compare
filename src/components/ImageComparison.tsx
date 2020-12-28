@@ -2,11 +2,17 @@ import React from 'react';
 import './ImageComparison.css';
 
 type ImageComparisonProps = {
-  src: string;
+  beforeSrc: string;
+  afterSrc: string;
 };
 
 export class ImageComparison extends React.Component<ImageComparisonProps> {
   render() {
-    return <img src={this.props.src} alt="Image for Comparison" />;
+    return (
+      <div>
+        <img src={this.props.beforeSrc} alt="Before" />
+        <img src={this.props.afterSrc} alt="After" />
+      </div>
+    );
   }
 }
