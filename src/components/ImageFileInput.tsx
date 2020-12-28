@@ -14,6 +14,7 @@ export class ImageFileInput extends React.Component {
         Filename
         <input
           type="file"
+          accept="image/*"
           ref={this.fileInput}
           onChange={this.handleFileChanged}
         ></input>
