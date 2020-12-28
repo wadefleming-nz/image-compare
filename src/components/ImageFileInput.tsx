@@ -1,11 +1,14 @@
 import React from 'react';
+import './ImageFileInput.css';
 
 export class ImageFileInput extends React.Component {
   render() {
     return (
       <div>
-        <div>Image File Input</div>
-        <input value="Image.jpg"></input>
+        <label>
+          Filename
+          <input value="Image.jpg"></input>
+        </label>
       </div>
     );
   }
