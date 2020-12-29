@@ -12,15 +12,19 @@ export class ImageComparison extends React.Component<ImageComparisonProps> {
     const offWhite = 'rgb(240,240,240)';
     const greyTransparent = 'rgba(180, 180, 180, 0.5)';
 
+    const style = {
+      sliderWidth: 1,
+      sliderColor: offWhite,
+      handleBackgroundColor: greyTransparent,
+      handleColor: 'white',
+    };
+
     return (
       <div className="container">
         <ImageSlider
           image1={this.props.afterSrc} // slider lib puts image1 on the right
           image2={this.props.beforeSrc} // and image2 on the left
-          sliderWidth={1}
-          sliderColor={offWhite}
-          handleBackgroundColor={greyTransparent}
-          handleColor={'white'}
+          {...style}
         />
       </div>
     );
