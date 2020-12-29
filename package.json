@@ -13,6 +13,7 @@
     "react": "^16.14.0",
     "react-compare-image": "^3.0.2",
     "react-dom": "^16.14.0",
+    "react-image-comparison-slider": "^1.8.4",
     "react-scripts": "3.4.3",
     "typescript": "^3.7.5"
   },
