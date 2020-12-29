@@ -1,6 +1,7 @@
 import React from 'react';
 import './ImageFileInput.css';
 import { Button } from '@material-ui/core';
+import AddAPhotoIcon from '@material-ui/icons/AddAPhoto';
 
 type ImageFileInputProps = {
   label: string;
@@ -25,12 +26,8 @@ export class ImageFileInput extends React.Component<ImageFileInputProps> {
           ref={this.fileInput}
           onChange={this.handleFileChanged}
         ></input>
-        <Button
-          variant="contained"
-          color="secondary"
-          component="span"
-          className="button"
-        >
+        <Button variant="contained" color="secondary" component="span">
+          <AddAPhotoIcon className="icon" />
           Upload
         </Button>
       </label>
