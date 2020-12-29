@@ -45,14 +45,8 @@ export class ImageComparer extends React.Component<{}, ImageComparerState> {
           label="After"
           onFileSelected={this.onAfterFileSelected}
         />
-        {beforeImageUrl && afterImageUrl ? (
-          <ImageComparison
-            beforeSrc={beforeImageUrl}
-            afterSrc={afterImageUrl}
-          />
-        ) : (
-          <div>Please select files</div>
-        )}
+
+        <ImageComparison beforeSrc={beforeImageUrl} afterSrc={afterImageUrl} />
       </div>
     );
   }
