@@ -1,6 +1,8 @@
 import React from 'react';
 import { ImageComparison } from './ImageComparison';
 import { ImageFileInput } from './ImageFileInput';
+import { ResetImages } from './ResetImages';
+import whitePlaceHolder from '../assets/white-placeholder.png';
 
 type ImageComparerState = {
   beforeImageUrl: string;
@@ -11,8 +13,8 @@ export class ImageComparer extends React.Component<{}, ImageComparerState> {
   constructor(props: never) {
     super(props);
     this.state = {
-      beforeImageUrl: '',
-      afterImageUrl: '',
+      beforeImageUrl: whitePlaceHolder,
+      afterImageUrl: whitePlaceHolder,
     };
   }
 
@@ -22,14 +24,31 @@ export class ImageComparer extends React.Component<{}, ImageComparerState> {
     }
   }
 
-  onBeforeFileSelected = (file: File) => {
+  setBeforeImageUrl(file: File) {
     this.revokeObjectUrl(this.state.beforeImageUrl);
-    this.setState({ beforeImageUrl: URL.createObjectURL(file) });
+    this.setState({
+      beforeImageUrl: file ? URL.createObjectURL(file) : whitePlaceHolder,
+    });
+  }
+
+  setAfterImageUrl(file: File) {
+    this.revokeObjectUrl(this.state.afterImageUrl);
+    this.setState({
+      afterImageUrl: file ? URL.createObjectURL(file) : whitePlaceHolder,
+    });
+  }
+
+  onBeforeFileSelected = (file: File) => {
+    this.setBeforeImageUrl(file);
   };
 
   onAfterFileSelected = (file: File) => {
-    this.revokeObjectUrl(this.state.afterImageUrl);
-    this.setState({ afterImageUrl: URL.createObjectURL(file) });
+    this.setAfterImageUrl(file);
+  };
+
+  onResetImages = () => {
+    this.setBeforeImageUrl(null);
+    this.setAfterImageUrl(null);
   };
 
   render() {
@@ -45,7 +64,7 @@ export class ImageComparer extends React.Component<{}, ImageComparerState> {
           label="After"
           onFileSelected={this.onAfterFileSelected}
         />
-
+        <ResetImages onReset={this.onResetImages} />
         <ImageComparison beforeSrc={beforeImageUrl} afterSrc={afterImageUrl} />
       </div>
     );

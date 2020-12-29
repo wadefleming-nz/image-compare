@@ -17,8 +17,6 @@ export class ImageComparison extends React.Component<ImageComparisonProps> {
       sliderColor: offWhite,
       handleBackgroundColor: greyTransparent,
       handleColor: 'white',
-      showPlaceholder: true,
-      customPlaceholder: <div className={'custom-place-holder'}></div>,
     };
 
     return (
