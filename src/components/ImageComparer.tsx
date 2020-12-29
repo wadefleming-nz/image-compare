@@ -38,15 +38,15 @@ export class ImageComparer extends React.Component<{}, ImageComparerState> {
     });
   }
 
-  onBeforeFileSelected = (file: File) => {
+  handleBeforeFileSelected = (file: File) => {
     this.setBeforeImageUrl(file);
   };
 
-  onAfterFileSelected = (file: File) => {
+  handleAfterFileSelected = (file: File) => {
     this.setAfterImageUrl(file);
   };
 
-  onResetImages = () => {
+  handleResetImages = () => {
     this.setBeforeImageUrl(null);
     this.setAfterImageUrl(null);
   };
@@ -58,13 +58,13 @@ export class ImageComparer extends React.Component<{}, ImageComparerState> {
       <div>
         <ImageFileInput
           label="Before"
-          onFileSelected={this.onBeforeFileSelected}
+          onFileSelected={this.handleBeforeFileSelected}
         />
         <ImageFileInput
           label="After"
-          onFileSelected={this.onAfterFileSelected}
+          onFileSelected={this.handleAfterFileSelected}
         />
-        <ResetImages onReset={this.onResetImages} />
+        <ResetImages onReset={this.handleResetImages} />
         <ImageComparison beforeSrc={beforeImageUrl} afterSrc={afterImageUrl} />
       </div>
     );
