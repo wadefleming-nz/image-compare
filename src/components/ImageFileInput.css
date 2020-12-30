@@ -5,6 +5,7 @@
 .image-text-field {
   flex: 1 1 auto;
   background-color: white;
+  border-radius: 5px;
 }
 
 .image-label {
