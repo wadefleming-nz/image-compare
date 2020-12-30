@@ -4,18 +4,19 @@ import { ImageFileInput } from './ImageFileInput';
 import { ResetImages } from './ResetImages';
 import whitePlaceHolder from '../assets/white-placeholder.png';
 
-type ImageComparerState = {
-  beforeImageUrl: string;
-  afterImageUrl: string;
+const defaultState = {
+  beforeImageFilename: '',
+  afterImageFilename: '',
+  beforeImageUrl: whitePlaceHolder,
+  afterImageUrl: whitePlaceHolder,
 };
+
+type ImageComparerState = typeof defaultState;
 
 export class ImageComparer extends React.Component<{}, ImageComparerState> {
   constructor(props: never) {
     super(props);
-    this.state = {
-      beforeImageUrl: whitePlaceHolder,
-      afterImageUrl: whitePlaceHolder,
-    };
+    this.state = defaultState;
   }
 
   revokeObjectUrl(url: string) {
@@ -24,31 +25,32 @@ export class ImageComparer extends React.Component<{}, ImageComparerState> {
     }
   }
 
-  setBeforeImageUrl(file: File) {
+  setBeforeImage(file: File) {
     this.revokeObjectUrl(this.state.beforeImageUrl);
     this.setState({
+      beforeImageFilename: file ? file.name : '',
       beforeImageUrl: file ? URL.createObjectURL(file) : whitePlaceHolder,
     });
   }
 
-  setAfterImageUrl(file: File) {
+  setAfterImage(file: File) {
     this.revokeObjectUrl(this.state.afterImageUrl);
     this.setState({
+      afterImageFilename: file ? file.name : '',
       afterImageUrl: file ? URL.createObjectURL(file) : whitePlaceHolder,
     });
   }
 
   handleBeforeFileSelected = (file: File) => {
-    this.setBeforeImageUrl(file);
+    this.setBeforeImage(file);
   };
 
   handleAfterFileSelected = (file: File) => {
-    this.setAfterImageUrl(file);
+    this.setAfterImage(file);
   };
 
   handleResetImages = () => {
-    this.setBeforeImageUrl(null);
-    this.setAfterImageUrl(null);
+    this.setState(defaultState);
   };
 
   render() {
@@ -58,10 +60,12 @@ export class ImageComparer extends React.Component<{}, ImageComparerState> {
       <div>
         <ImageFileInput
           label="Before"
+          fileName={this.state.beforeImageFilename}
           onFileSelected={this.handleBeforeFileSelected}
         />
         <ImageFileInput
           label="After"
+          fileName={this.state.afterImageFilename}
           onFileSelected={this.handleAfterFileSelected}
         />
         <ResetImages onReset={this.handleResetImages} />
