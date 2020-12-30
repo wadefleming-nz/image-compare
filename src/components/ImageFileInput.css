@@ -4,6 +4,7 @@
 
 .image-text-field {
   flex: 1 1 auto;
+  background-color: white;
 }
 
 .image-label {
