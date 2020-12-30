@@ -5,6 +5,11 @@
   max-width: 700px;
 }
 
+.image-container {
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
 ImageFileInput {
   grid-column: inputs;
 }

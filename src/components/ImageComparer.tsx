@@ -75,7 +75,12 @@ export class ImageComparer extends React.Component<{}, ImageComparerState> {
             <ResetImages onReset={this.handleResetImages} />
           </div>
         </div>
-        <ImageComparison beforeSrc={beforeImageUrl} afterSrc={afterImageUrl} />
+        <div className="image-container">
+          <ImageComparison
+            beforeSrc={beforeImageUrl}
+            afterSrc={afterImageUrl}
+          />
+        </div>
       </div>
     );
   }
