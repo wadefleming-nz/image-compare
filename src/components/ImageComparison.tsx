@@ -9,12 +9,12 @@ type ImageComparisonProps = {
 
 export class ImageComparison extends React.Component<ImageComparisonProps> {
   render() {
-    const offWhite = 'rgb(240,240,240)';
+    const lightGrey = 'rgb(217,217,217)';
     const greyTransparent = 'rgba(180, 180, 180, 0.5)';
 
     const style = {
       sliderWidth: 1,
-      sliderColor: offWhite,
+      sliderColor: lightGrey,
       handleBackgroundColor: greyTransparent,
       handleColor: 'white',
     };
