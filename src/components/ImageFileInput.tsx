@@ -26,7 +26,7 @@ export class ImageFileInput extends React.Component<ImageFileInputProps> {
           label={this.props.label}
           value={this.props.fileName}
         ></TextField>
-        <label>
+        <label className="image-label">
           <input
             hidden
             type="file"
@@ -35,7 +35,7 @@ export class ImageFileInput extends React.Component<ImageFileInputProps> {
             onChange={this.handleFileChanged}
           ></input>
           <Button variant="contained" color="secondary" component="span">
-            <AddAPhotoIcon className="icon" />
+            <AddAPhotoIcon className="image-button-icon" />
             Upload
           </Button>
         </label>
