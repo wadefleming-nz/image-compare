@@ -1,7 +1,3 @@
-body {
-  background-color: rgb(245, 245, 255);
-}
-
 .grid-container {
   display: grid;
   grid-template-columns: [inputs] 3fr [controls] 1fr;
