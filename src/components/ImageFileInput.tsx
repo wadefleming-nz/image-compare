@@ -19,8 +19,9 @@ export class ImageFileInput extends React.Component<ImageFileInputProps> {
 
   render() {
     return (
-      <div>
+      <div className="image-input-container">
         <TextField
+          className="image-text-field"
           disabled
           variant="outlined"
           label={this.props.label}
