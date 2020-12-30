@@ -1,4 +1,5 @@
 import React from 'react';
+import './ImageComparer.css';
 import { ImageComparison } from './ImageComparison';
 import { ImageFileInput } from './ImageFileInput';
 import { ResetImages } from './ResetImages';
@@ -58,17 +59,25 @@ export class ImageComparer extends React.Component<{}, ImageComparerState> {
 
     return (
       <div>
-        <ImageFileInput
-          label="Before"
-          fileName={this.state.beforeImageFilename}
-          onFileSelected={this.handleBeforeFileSelected}
-        />
-        <ImageFileInput
-          label="After"
-          fileName={this.state.afterImageFilename}
-          onFileSelected={this.handleAfterFileSelected}
-        />
-        <ResetImages onReset={this.handleResetImages} />
+        <div className="grid-container">
+          <div className="before-file">
+            <ImageFileInput
+              label="Before"
+              fileName={this.state.beforeImageFilename}
+              onFileSelected={this.handleBeforeFileSelected}
+            />
+          </div>
+          <div className="after-file">
+            <ImageFileInput
+              label="After"
+              fileName={this.state.afterImageFilename}
+              onFileSelected={this.handleAfterFileSelected}
+            />
+          </div>
+          <div className="controls">
+            <ResetImages onReset={this.handleResetImages} />
+          </div>
+        </div>
         <ImageComparison beforeSrc={beforeImageUrl} afterSrc={afterImageUrl} />
       </div>
     );

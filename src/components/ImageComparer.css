@@ -1,0 +1,26 @@
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'selectsrc controls'
+    'selectdest controls';
+  width: 800px;
+}
+
+.before-file {
+  grid-area: selectsrc;
+}
+
+.after-file {
+  grid-area: selectdest;
+}
+
+.controls {
+  grid-area: controls;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.grid-container > div {
+  padding: 20px;
+}
