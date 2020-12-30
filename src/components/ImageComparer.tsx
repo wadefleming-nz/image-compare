@@ -60,20 +60,17 @@ export class ImageComparer extends React.Component<{}, ImageComparerState> {
     return (
       <div>
         <div className="grid-container">
-          <div className="before-file">
-            <ImageFileInput
-              label="Before"
-              fileName={this.state.beforeImageFilename}
-              onFileSelected={this.handleBeforeFileSelected}
-            />
-          </div>
-          <div className="after-file">
-            <ImageFileInput
-              label="After"
-              fileName={this.state.afterImageFilename}
-              onFileSelected={this.handleAfterFileSelected}
-            />
-          </div>
+          <ImageFileInput
+            label="Before"
+            fileName={this.state.beforeImageFilename}
+            onFileSelected={this.handleBeforeFileSelected}
+          />
+
+          <ImageFileInput
+            label="After"
+            fileName={this.state.afterImageFilename}
+            onFileSelected={this.handleAfterFileSelected}
+          />
           <div className="controls">
             <ResetImages onReset={this.handleResetImages} />
           </div>
