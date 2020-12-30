@@ -20,7 +20,7 @@ export class ImageComparison extends React.Component<ImageComparisonProps> {
     };
 
     return (
-      <div className="container">
+      <div className="image-comparison-container">
         <ImageSlider
           image1={this.props.afterSrc} // slider lib puts image1 on the right
           image2={this.props.beforeSrc} // and image2 on the left

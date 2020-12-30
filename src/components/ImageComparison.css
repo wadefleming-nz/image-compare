@@ -1,6 +1,7 @@
-.container {
+.image-comparison-container {
   width: 700px;
   height: 450px;
+  border: 1px solid #bdbdbd;
 }
 
 .custom-place-holder {
