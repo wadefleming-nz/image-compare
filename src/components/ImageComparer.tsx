@@ -4,8 +4,8 @@ import { ImageComparison } from './ImageComparison';
 import { ImageFileInput } from './ImageFileInput';
 import { Action } from './Action';
 import whitePlaceHolder from '../assets/white-placeholder.png';
-import demo1BlackWhite from '../assets/demo1-black-white.jpg';
-import demo1Color from '../assets/demo1-color.jpg';
+import demo1Before from '../assets/demo1-before.jpg';
+import demo1After from '../assets/demo1-after.jpg';
 import demo2Before from '../assets/demo2-before.jpg';
 import demo2After from '../assets/demo2-after.jpg';
 
@@ -90,7 +90,7 @@ export class ImageComparer extends React.Component<{}, ImageComparerState> {
             <Action label="Reset" onClick={this.handleResetImages} />
             <Action
               label="Demo 1"
-              onClick={() => this.handleShowDemo(demo1BlackWhite, demo1Color)}
+              onClick={() => this.handleShowDemo(demo1Before, demo1After)}
             />
             <Action
               label="Demo 2"
