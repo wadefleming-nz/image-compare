@@ -9,6 +9,7 @@ import demo1After from '../assets/demo1-after.jpg';
 import demo2Before from '../assets/demo2-before.jpg';
 import demo2After from '../assets/demo2-after.jpg';
 import { randomString } from '../utils/random-string';
+import RotateLeftIcon from '@material-ui/icons/RotateLeft';
 
 const defaultImageState = {
   beforeImageFilename: '',
@@ -98,6 +99,7 @@ export class ImageComparer extends React.Component<{}, ImageComparerState> {
           <div className={styles.controls}>
             <Action
               label="Reset"
+              icon={RotateLeftIcon}
               color="secondary"
               onClick={this.handleReset}
             />
