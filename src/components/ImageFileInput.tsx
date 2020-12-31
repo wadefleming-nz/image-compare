@@ -1,5 +1,5 @@
 import React, { ChangeEvent } from 'react';
-import './ImageFileInput.css';
+import styles from './ImageFileInput.module.css';
 import { Button, TextField } from '@material-ui/core';
 import AddAPhotoIcon from '@material-ui/icons/AddAPhoto';
 
@@ -19,15 +19,15 @@ export class ImageFileInput extends React.Component<ImageFileInputProps> {
 
   render() {
     return (
-      <div className="image-input-container">
+      <div className={styles.container}>
         <TextField
-          className="image-text-field"
+          className={styles.textField}
           disabled
           variant="outlined"
           label={this.props.label}
           value={this.props.fileName}
         ></TextField>
-        <label className="image-label">
+        <label className={styles.label}>
           <input
             hidden
             type="file"
@@ -36,7 +36,7 @@ export class ImageFileInput extends React.Component<ImageFileInputProps> {
             onChange={this.handleFileChanged}
           ></input>
           <Button variant="contained" color="secondary" component="span">
-            <AddAPhotoIcon className="image-button-icon" />
+            <AddAPhotoIcon className={styles.buttonIcon} />
             Upload
           </Button>
         </label>

@@ -1,4 +1,4 @@
-.grid-container {
+.gridContainer {
   display: grid;
   grid-template-columns: [inputs] 3fr [controls] 1fr;
   grid-template-rows: 1fr 1fr;
@@ -6,7 +6,7 @@
   margin-left: 10px;
 }
 
-.image-container {
+.imageContainer {
   margin-left: 20px;
   margin-top: 20px;
 }
@@ -24,6 +24,6 @@ ImageFileInput {
   justify-content: space-around;
 }
 
-.grid-container > div {
+.gridContainer > div {
   padding: 10px;
 }

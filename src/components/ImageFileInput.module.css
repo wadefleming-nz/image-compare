@@ -1,17 +1,17 @@
-.image-input-container {
+.container {
   display: flex;
 }
 
-.image-text-field {
+.textField {
   flex: 1 1 auto;
   background-color: white;
   border-radius: 5px;
 }
 
-.image-label {
+.label {
   margin-left: 10px;
 }
 
-.image-button-icon {
+.buttonIcon {
   margin-right: 8px;
 }
