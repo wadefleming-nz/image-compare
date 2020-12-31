@@ -87,7 +87,11 @@ export class ImageComparer extends React.Component<{}, ImageComparerState> {
             onFileSelected={this.handleAfterFileSelected}
           />
           <div className="controls">
-            <Action label="Reset" onClick={this.handleResetImages} />
+            <Action
+              label="Reset"
+              color="secondary"
+              onClick={this.handleResetImages}
+            />
             <Action
               label="Demo 1"
               onClick={() => this.handleShowDemo(demo1Before, demo1After)}
