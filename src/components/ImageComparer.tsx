@@ -80,8 +80,6 @@ export class ImageComparer extends React.Component<{}, ImageComparerState> {
   };
 
   render() {
-    const { beforeImageUrl, afterImageUrl } = this.state;
-
     return (
       <div>
         <div className={styles.container}>
@@ -116,8 +114,8 @@ export class ImageComparer extends React.Component<{}, ImageComparerState> {
         <div className={styles.imageComparison}>
           <ImageComparison
             sliderKey={this.state.sliderKey}
-            beforeSrc={beforeImageUrl}
-            afterSrc={afterImageUrl}
+            beforeSrc={this.state.beforeImageUrl}
+            afterSrc={this.state.afterImageUrl}
           />
         </div>
       </div>
