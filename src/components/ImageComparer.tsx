@@ -4,6 +4,9 @@ import { ImageComparison } from './ImageComparison';
 import { ImageFileInput } from './ImageFileInput';
 import { ResetImages } from './ResetImages';
 import whitePlaceHolder from '../assets/white-placeholder.png';
+import { ShowDemo } from './ShowDemo';
+import demo1BlackWhite from '../assets/demo1-black-white.jpg';
+import demo1Color from '../assets/demo1-color.jpg';
 
 const defaultState = {
   beforeImageFilename: '',
@@ -54,6 +57,13 @@ export class ImageComparer extends React.Component<{}, ImageComparerState> {
     this.setState(defaultState);
   };
 
+  handleShowDemo = (beforeImageUrl: string, afterImageUrl: string) => {
+    this.setState({
+      beforeImageUrl,
+      afterImageUrl,
+    });
+  };
+
   render() {
     const { beforeImageUrl, afterImageUrl } = this.state;
 
@@ -73,6 +83,14 @@ export class ImageComparer extends React.Component<{}, ImageComparerState> {
           />
           <div className="controls">
             <ResetImages onReset={this.handleResetImages} />
+            <ShowDemo
+              label="Demo 1"
+              beforeImageFilename=""
+              afterImageFilename=""
+              beforeImageUrl={demo1BlackWhite}
+              afterImageUrl={demo1Color}
+              onShow={() => this.handleShowDemo(demo1BlackWhite, demo1Color)}
+            />
           </div>
         </div>
         <div className="image-container">
