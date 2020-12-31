@@ -8,6 +8,7 @@ import demo1Before from '../assets/demo1-before.jpg';
 import demo1After from '../assets/demo1-after.jpg';
 import demo2Before from '../assets/demo2-before.jpg';
 import demo2After from '../assets/demo2-after.jpg';
+import { randomString } from '../utils/random-string';
 
 const defaultImageState = {
   beforeImageFilename: '',
@@ -18,7 +19,7 @@ const defaultImageState = {
 
 const defaultState = {
   ...defaultImageState,
-  sliderKey: Math.random().toString(),
+  sliderKey: randomString(),
 };
 
 type ImageComparerState = typeof defaultState;
@@ -68,7 +69,7 @@ export class ImageComparer extends React.Component<{}, ImageComparerState> {
   handleReset = () => {
     this.setState({
       ...defaultImageState, // clear the images
-      sliderKey: Math.random().toString(), // force slider control to remount/reset
+      sliderKey: randomString(), // force slider control to remount/reset
     });
   };
 
