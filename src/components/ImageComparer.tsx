@@ -6,6 +6,8 @@ import { Action } from './Action';
 import whitePlaceHolder from '../assets/white-placeholder.png';
 import demo1BlackWhite from '../assets/demo1-black-white.jpg';
 import demo1Color from '../assets/demo1-color.jpg';
+import demo2Before from '../assets/demo2-before.jpg';
+import demo2After from '../assets/demo2-after.jpg';
 
 const defaultState = {
   beforeImageFilename: '',
@@ -89,6 +91,10 @@ export class ImageComparer extends React.Component<{}, ImageComparerState> {
             <Action
               label="Demo 1"
               onClick={() => this.handleShowDemo(demo1BlackWhite, demo1Color)}
+            />
+            <Action
+              label="Demo 2"
+              onClick={() => this.handleShowDemo(demo2Before, demo2After)}
             />
           </div>
         </div>
