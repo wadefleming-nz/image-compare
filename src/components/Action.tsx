@@ -1,18 +1,18 @@
 import { Button } from '@material-ui/core';
 import React from 'react';
-import './ResetImages.css';
 
-type ResetImagesProps = {
-  onReset: () => void;
+type ActionProps = {
+  label: string;
+  onClick: () => void;
 };
 
-export class ResetImages extends React.Component<ResetImagesProps> {
-  handleClick = () => this.props.onReset();
+export class Action extends React.Component<ActionProps> {
+  handleClick = () => this.props.onClick();
 
   render() {
     return (
       <Button variant="contained" color="primary" onClick={this.handleClick}>
-        Reset
+        {this.props.label}
       </Button>
     );
   }
