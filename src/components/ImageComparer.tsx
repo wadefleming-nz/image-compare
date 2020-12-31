@@ -9,11 +9,16 @@ import demo1After from '../assets/demo1-after.jpg';
 import demo2Before from '../assets/demo2-before.jpg';
 import demo2After from '../assets/demo2-after.jpg';
 
-const defaultState = {
+const defaultImageState = {
   beforeImageFilename: '',
   afterImageFilename: '',
   beforeImageUrl: whitePlaceHolder,
   afterImageUrl: whitePlaceHolder,
+};
+
+const defaultState = {
+  ...defaultImageState,
+  sliderKey: Math.random().toString(),
 };
 
 type ImageComparerState = typeof defaultState;
@@ -60,8 +65,11 @@ export class ImageComparer extends React.Component<{}, ImageComparerState> {
     this.setAfterImage(this.getImageProperties(file));
   };
 
-  handleResetImages = () => {
-    this.setState(defaultState);
+  handleReset = () => {
+    this.setState({
+      ...defaultImageState, // clear the images
+      sliderKey: Math.random().toString(), // force slider control to remount/reset
+    });
   };
 
   handleShowDemo = (beforeImageUrl: string, afterImageUrl: string) => {
@@ -90,7 +98,7 @@ export class ImageComparer extends React.Component<{}, ImageComparerState> {
             <Action
               label="Reset"
               color="secondary"
-              onClick={this.handleResetImages}
+              onClick={this.handleReset}
             />
             <Action
               label="Demo 1"
@@ -104,6 +112,7 @@ export class ImageComparer extends React.Component<{}, ImageComparerState> {
         </div>
         <div className={styles.imageComparison}>
           <ImageComparison
+            sliderKey={this.state.sliderKey}
             beforeSrc={beforeImageUrl}
             afterSrc={afterImageUrl}
           />
