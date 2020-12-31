@@ -74,7 +74,7 @@ export class ImageComparer extends React.Component<{}, ImageComparerState> {
 
     return (
       <div>
-        <div className={styles.gridContainer}>
+        <div className={styles.container}>
           <ImageFileInput
             label="Before"
             fileName={this.state.beforeImageFilename}
@@ -102,7 +102,7 @@ export class ImageComparer extends React.Component<{}, ImageComparerState> {
             />
           </div>
         </div>
-        <div className={styles.imageContainer}>
+        <div className={styles.imageComparison}>
           <ImageComparison
             beforeSrc={beforeImageUrl}
             afterSrc={afterImageUrl}
