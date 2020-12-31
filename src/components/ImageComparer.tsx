@@ -3,8 +3,8 @@ import './ImageComparer.css';
 import { ImageComparison } from './ImageComparison';
 import { ImageFileInput } from './ImageFileInput';
 import { ResetImages } from './ResetImages';
-import whitePlaceHolder from '../assets/white-placeholder.png';
 import { ShowDemo } from './ShowDemo';
+import whitePlaceHolder from '../assets/white-placeholder.png';
 import demo1BlackWhite from '../assets/demo1-black-white.jpg';
 import demo1Color from '../assets/demo1-color.jpg';
 
@@ -29,28 +29,34 @@ export class ImageComparer extends React.Component<{}, ImageComparerState> {
     }
   }
 
-  setBeforeImage(file: File) {
+  setBeforeImage(image: { filename: string; imageUrl: string }) {
     this.revokeObjectUrl(this.state.beforeImageUrl);
     this.setState({
-      beforeImageFilename: file ? file.name : '',
-      beforeImageUrl: file ? URL.createObjectURL(file) : whitePlaceHolder,
+      beforeImageFilename: image.filename,
+      beforeImageUrl: image.imageUrl,
     });
   }
 
-  setAfterImage(file: File) {
+  setAfterImage(image: { filename: string; imageUrl: string }) {
     this.revokeObjectUrl(this.state.afterImageUrl);
     this.setState({
-      afterImageFilename: file ? file.name : '',
-      afterImageUrl: file ? URL.createObjectURL(file) : whitePlaceHolder,
+      afterImageFilename: image.filename,
+      afterImageUrl: image.imageUrl,
     });
+  }
+
+  getImageProperties(file: File) {
+    const filename = file ? file.name : '';
+    const imageUrl = file ? URL.createObjectURL(file) : whitePlaceHolder;
+    return { filename, imageUrl };
   }
 
   handleBeforeFileSelected = (file: File) => {
-    this.setBeforeImage(file);
+    this.setBeforeImage(this.getImageProperties(file));
   };
 
   handleAfterFileSelected = (file: File) => {
-    this.setAfterImage(file);
+    this.setAfterImage(this.getImageProperties(file));
   };
 
   handleResetImages = () => {
@@ -58,12 +64,8 @@ export class ImageComparer extends React.Component<{}, ImageComparerState> {
   };
 
   handleShowDemo = (beforeImageUrl: string, afterImageUrl: string) => {
-    this.setState({
-      beforeImageFilename: '',
-      afterImageFilename: '',
-      beforeImageUrl, // TODO need to revoke
-      afterImageUrl,
-    });
+    this.setBeforeImage({ filename: '', imageUrl: beforeImageUrl });
+    this.setAfterImage({ filename: '', imageUrl: afterImageUrl });
   };
 
   render() {
