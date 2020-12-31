@@ -25,7 +25,7 @@ export class Action extends React.Component<ActionProps> {
         color={this.props.color}
         onClick={this.handleClick}
       >
-        {Icon && <Icon className="button-icon" />}
+        {Icon && <Icon />}
         {this.props.label}
       </Button>
     );
