@@ -4,8 +4,6 @@ import './ResetImages.css';
 
 type ShowDemoProps = {
   label: string;
-  beforeImageFilename: string;
-  afterImageFilename: string;
   beforeImageUrl: string;
   afterImageUrl: string;
   onShow: () => void;

@@ -59,7 +59,9 @@ export class ImageComparer extends React.Component<{}, ImageComparerState> {
 
   handleShowDemo = (beforeImageUrl: string, afterImageUrl: string) => {
     this.setState({
-      beforeImageUrl,
+      beforeImageFilename: '',
+      afterImageFilename: '',
+      beforeImageUrl, // TODO need to revoke
       afterImageUrl,
     });
   };
@@ -85,8 +87,6 @@ export class ImageComparer extends React.Component<{}, ImageComparerState> {
             <ResetImages onReset={this.handleResetImages} />
             <ShowDemo
               label="Demo 1"
-              beforeImageFilename=""
-              afterImageFilename=""
               beforeImageUrl={demo1BlackWhite}
               afterImageUrl={demo1Color}
               onShow={() => this.handleShowDemo(demo1BlackWhite, demo1Color)}
