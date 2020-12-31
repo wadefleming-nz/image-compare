@@ -1,3 +1,7 @@
 body {
   background-color: #e6e6f3;
 }
+
+.button-icon {
+  margin-right: 8px;
+}
