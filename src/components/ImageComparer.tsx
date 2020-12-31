@@ -89,8 +89,6 @@ export class ImageComparer extends React.Component<{}, ImageComparerState> {
             <ResetImages onReset={this.handleResetImages} />
             <ShowDemo
               label="Demo 1"
-              beforeImageUrl={demo1BlackWhite}
-              afterImageUrl={demo1Color}
               onShow={() => this.handleShowDemo(demo1BlackWhite, demo1Color)}
             />
           </div>
