@@ -1,3 +1,10 @@
+import {
+  BEFORE_IMAGE_CHANGED,
+  AFTER_IMAGE_CHANGED,
+  IMAGES_RESET,
+  ImageActionTypes,
+} from './actions';
+
 const imageInitialState = {
   filename: '',
   url: '', // TODO use whitePlaceHolder
@@ -12,22 +19,22 @@ export type ImagesState = typeof initialState;
 
 export default function imagesReducer(
   state = initialState,
-  action: { payload: any; type: string }
+  action: ImageActionTypes
 ) {
   switch (action.type) {
-    case 'images/beforeImageChanged': {
+    case BEFORE_IMAGE_CHANGED: {
       return {
         ...state,
         beforeImage: action.payload,
       };
     }
-    case 'images/afterImageChanged': {
+    case AFTER_IMAGE_CHANGED: {
       return {
         ...state,
         afterImage: action.payload,
       };
     }
-    case 'images/reset': {
+    case IMAGES_RESET: {
       return {
         ...state,
         beforeImage: imageInitialState,

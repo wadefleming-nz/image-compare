@@ -10,20 +10,23 @@ import demo2Before from '../../assets/demo2-before.jpg';
 import demo2After from '../../assets/demo2-after.jpg';
 import { randomString } from '../../utils/random-string';
 import RotateLeftIcon from '@material-ui/icons/RotateLeft';
+import { RootState } from '../../reducer';
+import { useDispatch, useSelector } from 'react-redux';
+import { Image } from './image-type';
+import {
+  AFTER_IMAGE_CHANGED,
+  BEFORE_IMAGE_CHANGED,
+  IMAGES_RESET,
+} from './actions';
 
-type Image = {
-  filename: string;
-  url: string;
-};
-
-const defaultImage: Image = {
-  filename: '',
-  url: whitePlaceHolder,
-};
+const selectBeforeImage = (state: RootState) => state.images.beforeImage;
+const selectAfterImage = (state: RootState) => state.images.afterImage;
 
 export function ImageComparer() {
-  const [beforeImage, setBeforeImage] = useState(defaultImage);
-  const [afterImage, setAfterImage] = useState(defaultImage);
+  const dispatch = useDispatch();
+  const beforeImage = useSelector(selectBeforeImage);
+  const afterImage = useSelector(selectAfterImage);
+
   const [sliderKey, setSliderKey] = useState(randomString());
 
   function revokeObjectUrl(url: string) {
@@ -34,16 +37,12 @@ export function ImageComparer() {
 
   function changeBeforeImage(image: Image) {
     revokeObjectUrl(beforeImage.url);
-    setBeforeImage({
-      ...image,
-    });
+    dispatch({ type: BEFORE_IMAGE_CHANGED, payload: image });
   }
 
   function changeAfterImage(image: Image) {
     revokeObjectUrl(afterImage.url);
-    setAfterImage({
-      ...image,
-    });
+    dispatch({ type: AFTER_IMAGE_CHANGED, payload: image });
   }
 
   function getImageProperties(file: File) {
@@ -61,8 +60,7 @@ export function ImageComparer() {
   };
 
   const handleReset = () => {
-    setBeforeImage(defaultImage);
-    setAfterImage(defaultImage);
+    dispatch({ type: IMAGES_RESET });
     setSliderKey(randomString()); // force slider control to remount/reset
   };
 
