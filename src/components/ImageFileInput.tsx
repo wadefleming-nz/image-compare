@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from 'react';
+import React, { ChangeEvent, useRef } from 'react';
 import styles from './ImageFileInput.module.css';
 import { Button, TextField } from '@material-ui/core';
 import AddAPhotoIcon from '@material-ui/icons/AddAPhoto';
@@ -9,38 +9,40 @@ type ImageFileInputProps = {
   onFileSelected: (file: File) => void;
 };
 
-export class ImageFileInput extends React.Component<ImageFileInputProps> {
-  fileInput = React.createRef<HTMLInputElement>();
+export function ImageFileInput({
+  label,
+  fileName,
+  onFileSelected,
+}: ImageFileInputProps) {
+  const fileInput = useRef<HTMLInputElement>();
 
-  handleFileChanged = (e: ChangeEvent<HTMLInputElement>) => {
-    this.props.onFileSelected(this.fileInput.current?.files?.[0]);
+  const handleFileChanged = (e: ChangeEvent<HTMLInputElement>) => {
+    onFileSelected(fileInput.current?.files?.[0]);
     e.target.value = null; // reset the input so that onChange still fires if the same file is selected following a reset
   };
 
-  render() {
-    return (
-      <div className={styles.container}>
-        <TextField
-          className={styles.textField}
-          disabled
-          variant="outlined"
-          label={this.props.label}
-          value={this.props.fileName}
-        ></TextField>
-        <label className={styles.label}>
-          <input
-            hidden
-            type="file"
-            accept="image/*"
-            ref={this.fileInput}
-            onChange={this.handleFileChanged}
-          ></input>
-          <Button variant="contained" color="secondary" component="span">
-            <AddAPhotoIcon />
-            Upload
-          </Button>
-        </label>
-      </div>
-    );
-  }
+  return (
+    <div className={styles.container}>
+      <TextField
+        className={styles.textField}
+        disabled
+        variant="outlined"
+        label={label}
+        value={fileName}
+      ></TextField>
+      <label className={styles.label}>
+        <input
+          hidden
+          type="file"
+          accept="image/*"
+          ref={fileInput}
+          onChange={handleFileChanged}
+        ></input>
+        <Button variant="contained" color="secondary" component="span">
+          <AddAPhotoIcon />
+          Upload
+        </Button>
+      </label>
+    </div>
+  );
 }

@@ -3,31 +3,25 @@ import { Button, PropTypes, SvgIconProps } from '@material-ui/core';
 
 type ActionProps = {
   label: string;
-  icon: React.ComponentType<SvgIconProps>;
-  color: PropTypes.Color;
   onClick: () => void;
+  icon?: React.ComponentType<SvgIconProps>;
+  color?: PropTypes.Color;
 };
 
-export class Action extends React.Component<ActionProps> {
-  static defaultProps = {
-    color: 'primary',
-    icon: null as React.ComponentType<SvgIconProps>,
-  };
+export function Action({
+  label,
+  onClick,
+  icon = null,
+  color = 'primary',
+}: ActionProps) {
+  const handleClick = () => onClick();
 
-  handleClick = () => this.props.onClick();
+  const Icon = icon;
 
-  render() {
-    const Icon = this.props.icon;
-
-    return (
-      <Button
-        variant="contained"
-        color={this.props.color}
-        onClick={this.handleClick}
-      >
-        {Icon && <Icon />}
-        {this.props.label}
-      </Button>
-    );
-  }
+  return (
+    <Button variant="contained" color={color} onClick={handleClick}>
+      {Icon && <Icon />}
+      {label}
+    </Button>
+  );
 }
