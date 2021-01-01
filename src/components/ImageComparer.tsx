@@ -11,14 +11,19 @@ import demo2After from '../assets/demo2-after.jpg';
 import { randomString } from '../utils/random-string';
 import RotateLeftIcon from '@material-ui/icons/RotateLeft';
 
-const defaultImageState = {
+type Image = {
+  filename: string;
+  url: string;
+};
+
+const defaultImage: Image = {
   filename: '',
   url: whitePlaceHolder,
 };
 
 export function ImageComparer() {
-  const [beforeImage, setBeforeImage] = useState(defaultImageState);
-  const [afterImage, setAfterImage] = useState(defaultImageState);
+  const [beforeImage, setBeforeImage] = useState(defaultImage);
+  const [afterImage, setAfterImage] = useState(defaultImage);
   const [sliderKey, setSliderKey] = useState(randomString());
 
   function revokeObjectUrl(url: string) {
@@ -27,14 +32,14 @@ export function ImageComparer() {
     }
   }
 
-  function changeBeforeImage(image: { filename: string; url: string }) {
+  function changeBeforeImage(image: Image) {
     revokeObjectUrl(beforeImage.url);
     setBeforeImage({
       ...image,
     });
   }
 
-  function changeAfterImage(image: { filename: string; url: string }) {
+  function changeAfterImage(image: Image) {
     revokeObjectUrl(afterImage.url);
     setAfterImage({
       ...image,
@@ -56,8 +61,8 @@ export function ImageComparer() {
   };
 
   const handleReset = () => {
-    setBeforeImage(defaultImageState);
-    setAfterImage(defaultImageState);
+    setBeforeImage(defaultImage);
+    setAfterImage(defaultImage);
     setSliderKey(randomString()); // force slider control to remount/reset
   };
 
