@@ -9,11 +9,15 @@ type ImageFileInputProps = {
   onFileSelected: (file: File) => void;
 };
 
-export function ImageFileInput(props: ImageFileInputProps) {
+export function ImageFileInput({
+  label,
+  fileName,
+  onFileSelected,
+}: ImageFileInputProps) {
   const fileInput = useRef<HTMLInputElement>();
 
   const handleFileChanged = (e: ChangeEvent<HTMLInputElement>) => {
-    props.onFileSelected(fileInput.current?.files?.[0]);
+    onFileSelected(fileInput.current?.files?.[0]);
     e.target.value = null; // reset the input so that onChange still fires if the same file is selected following a reset
   };
 
@@ -23,8 +27,8 @@ export function ImageFileInput(props: ImageFileInputProps) {
         className={styles.textField}
         disabled
         variant="outlined"
-        label={props.label}
-        value={props.fileName}
+        label={label}
+        value={fileName}
       ></TextField>
       <label className={styles.label}>
         <input

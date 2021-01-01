@@ -8,7 +8,11 @@ type ImageComparisonProps = {
   afterSrc: string;
 };
 
-export function ImageComparison(props: ImageComparisonProps) {
+export function ImageComparison({
+  sliderKey,
+  beforeSrc,
+  afterSrc,
+}: ImageComparisonProps) {
   const lightGrey = 'rgb(217,217,217)';
   const greyTransparent = 'rgba(180, 180, 180, 0.5)';
 
@@ -20,10 +24,10 @@ export function ImageComparison(props: ImageComparisonProps) {
   };
 
   return (
-    <div className={styles.container} key={props.sliderKey}>
+    <div className={styles.container} key={sliderKey}>
       <ImageSlider
-        image1={props.afterSrc} // slider lib puts image1 on the right
-        image2={props.beforeSrc} // and image2 on the left
+        image1={afterSrc} // slider lib puts image1 on the right
+        image2={beforeSrc} // and image2 on the left
         {...style}
       />
     </div>
