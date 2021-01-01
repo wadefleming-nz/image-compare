@@ -8,12 +8,12 @@ type ActionProps = {
   color?: PropTypes.Color;
 };
 
-export const Action = ({
+export function Action({
   label,
   onClick,
   icon = null,
   color = 'primary',
-}: ActionProps) => {
+}: ActionProps) {
   const handleClick = () => onClick();
 
   const Icon = icon;
@@ -24,4 +24,4 @@ export const Action = ({
       {label}
     </Button>
   );
-};
+}

@@ -23,7 +23,7 @@ const defaultState = {
   sliderKey: randomString(),
 };
 
-export const ImageComparer = () => {
+export function ImageComparer() {
   const [state, setState] = useState(defaultState);
 
   function revokeObjectUrl(url: string) {
@@ -116,4 +116,4 @@ export const ImageComparer = () => {
       </div>
     </div>
   );
-};
+}

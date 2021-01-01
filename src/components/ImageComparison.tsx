@@ -8,7 +8,7 @@ type ImageComparisonProps = {
   afterSrc: string;
 };
 
-export const ImageComparison = (props: ImageComparisonProps) => {
+export function ImageComparison(props: ImageComparisonProps) {
   const lightGrey = 'rgb(217,217,217)';
   const greyTransparent = 'rgba(180, 180, 180, 0.5)';
 
@@ -28,4 +28,4 @@ export const ImageComparison = (props: ImageComparisonProps) => {
       />
     </div>
   );
-};
+}

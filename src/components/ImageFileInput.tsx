@@ -9,7 +9,7 @@ type ImageFileInputProps = {
   onFileSelected: (file: File) => void;
 };
 
-export const ImageFileInput = (props: ImageFileInputProps) => {
+export function ImageFileInput(props: ImageFileInputProps) {
   const fileInput = useRef<HTMLInputElement>();
 
   const handleFileChanged = (e: ChangeEvent<HTMLInputElement>) => {
@@ -41,4 +41,4 @@ export const ImageFileInput = (props: ImageFileInputProps) => {
       </label>
     </div>
   );
-};
+}
