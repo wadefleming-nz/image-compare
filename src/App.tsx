@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { ImageComparer } from './ImageComparer';
+import { ImageComparer } from './features/image-comparer/ImageComparer';
 
 const App = () => (
   <div className="App">

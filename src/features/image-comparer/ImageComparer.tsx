@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import styles from './ImageComparer.module.css';
-import { ImageComparison } from './ImageComparison';
-import { ImageFileInput } from './ImageFileInput';
-import { Action } from './Action';
-import whitePlaceHolder from '../assets/white-placeholder.png';
-import demo1Before from '../assets/demo1-before.jpg';
-import demo1After from '../assets/demo1-after.jpg';
-import demo2Before from '../assets/demo2-before.jpg';
-import demo2After from '../assets/demo2-after.jpg';
-import { randomString } from '../utils/random-string';
+import { ImageComparison } from '../image-comparison/ImageComparison';
+import { ImageFileInput } from '../image-file-input/ImageFileInput';
+import { Action } from '../action/Action';
+import whitePlaceHolder from '../../assets/white-placeholder.png';
+import demo1Before from '../../assets/demo1-before.jpg';
+import demo1After from '../../assets/demo1-after.jpg';
+import demo2Before from '../../assets/demo2-before.jpg';
+import demo2After from '../../assets/demo2-after.jpg';
+import { randomString } from '../../utils/random-string';
 import RotateLeftIcon from '@material-ui/icons/RotateLeft';
 
 type Image = {
