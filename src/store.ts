@@ -1,7 +1,10 @@
-import { createStore } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import rootReducer from './reducer';
+import { configureStore, Reducer } from '@reduxjs/toolkit';
+import imagesReducer from './features/image-comparer/reducer';
 
-const store = createStore(rootReducer, composeWithDevTools());
+const store = configureStore({
+  reducer: {
+    images: imagesReducer as Reducer<ReturnType<typeof imagesReducer>>, // cast prevents type errors
+  },
+});
 
 export default store;
