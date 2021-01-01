@@ -1,10 +1,14 @@
-import { configureStore } from '@reduxjs/toolkit';
-import imageComparerReducer from './features/image-comparer/reducer';
+import imagesReducer, { ImagesState } from './features/image-comparer/reducer';
 
-const store = configureStore({
-  reducer: {
-    images: imageComparerReducer,
-  },
-});
+const initialState = {
+  images: null as ImagesState,
+};
 
-export default store;
+export default function rootReducer(
+  state = initialState,
+  action: { payload: any; type: string }
+) {
+  return {
+    images: imagesReducer(state.images, action),
+  };
+}

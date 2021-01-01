@@ -1,5 +1,3 @@
-import { createSlice } from '@reduxjs/toolkit';
-
 const imageInitialState = {
   filename: '',
   url: '', // TODO use whitePlaceHolder
@@ -10,21 +8,33 @@ const initialState = {
   afterImage: imageInitialState,
 };
 
-type State = typeof initialState;
+export type ImagesState = typeof initialState;
 
-const slice = createSlice({
-  name: 'images',
-  initialState,
-  reducers: {
-    beforeImageChanged(state: State, action: { payload: any; type: string }) {
-      state.beforeImage = action.payload;
-    },
-    afterImageChanged(state: State, action: { payload: any; type: string }) {
-      state.afterImage = action.payload;
-    },
-  },
-});
-
-export const { beforeImageChanged, afterImageChanged } = slice.actions;
-
-export default slice.reducer;
+export default function imagesReducer(
+  state = initialState,
+  action: { payload: any; type: string }
+) {
+  switch (action.type) {
+    case 'images/beforeImageChanged': {
+      return {
+        ...state,
+        beforeImage: action.payload,
+      };
+    }
+    case 'images/afterImageChanged': {
+      return {
+        ...state,
+        afterImage: action.payload,
+      };
+    }
+    case 'images/reset': {
+      return {
+        ...state,
+        beforeImage: imageInitialState,
+        afterImage: imageInitialState,
+      };
+    }
+    default:
+      return state;
+  }
+}
