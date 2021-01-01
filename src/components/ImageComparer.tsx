@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './ImageComparer.module.css';
 import { ImageComparison } from './ImageComparison';
 import { ImageFileInput } from './ImageFileInput';
@@ -23,102 +23,97 @@ const defaultState = {
   sliderKey: randomString(),
 };
 
-type ImageComparerState = typeof defaultState;
+export const ImageComparer = () => {
+  const [state, setState] = useState(defaultState);
 
-export class ImageComparer extends React.Component<{}, ImageComparerState> {
-  constructor(props: never) {
-    super(props);
-    this.state = defaultState;
-  }
-
-  revokeObjectUrl(url: string) {
+  function revokeObjectUrl(url: string) {
     if (url) {
       URL.revokeObjectURL(url);
     }
   }
 
-  setBeforeImage(image: { filename: string; imageUrl: string }) {
-    this.revokeObjectUrl(this.state.beforeImageUrl);
-    this.setState({
+  function setBeforeImage(image: { filename: string; imageUrl: string }) {
+    revokeObjectUrl(state.beforeImageUrl);
+    setState((prevState) => ({
+      ...prevState,
       beforeImageFilename: image.filename,
       beforeImageUrl: image.imageUrl,
-    });
+    }));
   }
 
-  setAfterImage(image: { filename: string; imageUrl: string }) {
-    this.revokeObjectUrl(this.state.afterImageUrl);
-    this.setState({
+  function setAfterImage(image: { filename: string; imageUrl: string }) {
+    revokeObjectUrl(state.afterImageUrl);
+    setState((prevState) => ({
+      ...prevState,
       afterImageFilename: image.filename,
       afterImageUrl: image.imageUrl,
-    });
+    }));
   }
 
-  getImageProperties(file: File) {
+  function getImageProperties(file: File) {
     const filename = file ? file.name : '';
     const imageUrl = file ? URL.createObjectURL(file) : whitePlaceHolder;
     return { filename, imageUrl };
   }
 
-  handleBeforeFileSelected = (file: File) => {
-    this.setBeforeImage(this.getImageProperties(file));
+  const handleBeforeFileSelected = (file: File) => {
+    setBeforeImage(getImageProperties(file));
   };
 
-  handleAfterFileSelected = (file: File) => {
-    this.setAfterImage(this.getImageProperties(file));
+  const handleAfterFileSelected = (file: File) => {
+    setAfterImage(getImageProperties(file));
   };
 
-  handleReset = () => {
-    this.setState({
+  const handleReset = () => {
+    setState({
       ...defaultImageState, // clear the images
       sliderKey: randomString(), // force slider control to remount/reset
     });
   };
 
-  handleShowDemo = (beforeImageUrl: string, afterImageUrl: string) => {
-    this.setBeforeImage({ filename: '', imageUrl: beforeImageUrl });
-    this.setAfterImage({ filename: '', imageUrl: afterImageUrl });
+  const handleShowDemo = (beforeImageUrl: string, afterImageUrl: string) => {
+    setBeforeImage({ filename: '', imageUrl: beforeImageUrl });
+    setAfterImage({ filename: '', imageUrl: afterImageUrl });
   };
 
-  render() {
-    return (
-      <div>
-        <div className={styles.container}>
-          <ImageFileInput
-            label="Before"
-            fileName={this.state.beforeImageFilename}
-            onFileSelected={this.handleBeforeFileSelected}
-          />
+  return (
+    <div>
+      <div className={styles.container}>
+        <ImageFileInput
+          label="Before"
+          fileName={state.beforeImageFilename}
+          onFileSelected={handleBeforeFileSelected}
+        />
 
-          <ImageFileInput
-            label="After"
-            fileName={this.state.afterImageFilename}
-            onFileSelected={this.handleAfterFileSelected}
+        <ImageFileInput
+          label="After"
+          fileName={state.afterImageFilename}
+          onFileSelected={handleAfterFileSelected}
+        />
+        <div className={styles.controls}>
+          <Action
+            label="Reset"
+            icon={RotateLeftIcon}
+            color="secondary"
+            onClick={handleReset}
           />
-          <div className={styles.controls}>
-            <Action
-              label="Reset"
-              icon={RotateLeftIcon}
-              color="secondary"
-              onClick={this.handleReset}
-            />
-            <Action
-              label="Demo 1"
-              onClick={() => this.handleShowDemo(demo1Before, demo1After)}
-            />
-            <Action
-              label="Demo 2"
-              onClick={() => this.handleShowDemo(demo2Before, demo2After)}
-            />
-          </div>
-        </div>
-        <div className={styles.imageComparison}>
-          <ImageComparison
-            sliderKey={this.state.sliderKey}
-            beforeSrc={this.state.beforeImageUrl}
-            afterSrc={this.state.afterImageUrl}
+          <Action
+            label="Demo 1"
+            onClick={() => handleShowDemo(demo1Before, demo1After)}
+          />
+          <Action
+            label="Demo 2"
+            onClick={() => handleShowDemo(demo2Before, demo2After)}
           />
         </div>
       </div>
-    );
-  }
-}
+      <div className={styles.imageComparison}>
+        <ImageComparison
+          sliderKey={state.sliderKey}
+          beforeSrc={state.beforeImageUrl}
+          afterSrc={state.afterImageUrl}
+        />
+      </div>
+    </div>
+  );
+};
