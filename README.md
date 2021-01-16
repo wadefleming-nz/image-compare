@@ -1,4 +1,4 @@
-## Image Compare
+# Image Compare
 
 This application allows detailed comparison of two images using a slider control.
 
@@ -10,7 +10,7 @@ https://flamboyant-heyrovsky-aaecfb.netlify.app/
 
 https://github.com/wflemingnz/image-compare
 
-# Technologies
+## Technologies
 
 - React
 - Typescript
